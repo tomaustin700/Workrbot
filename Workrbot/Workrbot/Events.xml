@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<SavedEvents xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Events>
+    <EventDTO>
+      <EventId>4d1d99a1-028a-4b04-b4e0-ee9a2c478bd7</EventId>
+      <Name>Fixed But</Name>
+      <TagUser>true</TagUser>
+      <Comment>It looks like you are trying to add additional issues to this log, if this is correct please open a new log</Comment>
+      <EventTrigger>WorkItemCommentedOn</EventTrigger>
+      <SecondaryTrigger>Contains</SecondaryTrigger>
+      <SecondaryTriggerActionValue>fixed but</SecondaryTriggerActionValue>
+      <WorkItemActionField xsi:nil="true" />
+      <WorkItemType>Bug</WorkItemType>
+      <Project>Default Project</Project>
+    </EventDTO>
+  </Events>
+</SavedEvents>

@@ -1,0 +1,167 @@
+﻿
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
+
+
+@*<div class="jumbotron">
+        <h1>Workrbot</h1>
+        <p class="lead">Auto Moderator for Microsoft Team Foundation Server</p>
+
+
+    </div>*@
+
+<div class="bodydiv">
+    <div>
+        <h3>Statistics</h3>
+        <div class="row">
+            <div class="col-sm-6">
+                <h7>Replies Per User</h7>
+                <div class="canvas-div">
+                    <canvas id="repliesPerUser"></canvas>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <h7>Event Trigger Count</h7>
+                <div class="canvas-div">
+                    <canvas id="eventHistory"></canvas>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<script>
+    var rpu = document.getElementById('repliesPerUser').getContext('2d');
+
+    var myChart = new Chart(rpu, {
+        type: 'bar',
+        data: {
+            labels: @Html.Raw(Json.Encode(ViewBag.Names)),
+            datasets: [
+                {
+                    label: "Replies",
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1,
+                    data: @Html.Raw(Json.Encode(ViewBag.Counts)),
+                }
+            ]
+        },
+        options: {
+            scales: {
+                xAxes: [{
+                    stacked: true
+                }],
+                yAxes: [{
+                    stacked: true,
+                    ticks: {
+                        beginAtZero: true,
+                        userCallback: function(label, index, labels) {
+                            // when the floored value is the same as the value we have a whole number
+                            if (Math.floor(label) === label) {
+                                return label;
+                            }
+
+                        }
+                    }
+                }]
+            },
+            legend: {
+                display: false
+            },
+            tooltips: {
+                callbacks: {
+                    label: function(tooltipItem) {
+                        return tooltipItem.yLabel;
+                    }
+                }
+            }
+        }
+    });
+
+    var eh = document.getElementById('eventHistory').getContext('2d');
+
+    var myChart = new Chart(eh, {
+        type: 'bar',
+        data: {
+            labels: @Html.Raw(Json.Encode(ViewBag.Types)),
+            datasets: [
+                {
+                    label: "Events Fired",
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1,
+                    data: @Html.Raw(Json.Encode(ViewBag.EventCounts)),
+                }
+            ]
+        },
+        options: {
+            scales: {
+                xAxes: [{
+                    stacked: true
+                }],
+                yAxes: [{
+                    stacked: true,
+                    ticks: {
+                        beginAtZero: true,
+                        userCallback: function(label, index, labels) {
+                            // when the floored value is the same as the value we have a whole number
+                            if (Math.floor(label) === label) {
+                                return label;
+                            }
+                        }
+                    }
+
+                        
+                }]
+            },
+            legend: {
+                display: false
+            },
+            tooltips: {
+                callbacks: {
+                    label: function(tooltipItem) {
+                        return tooltipItem.yLabel;
+                    }
+                }
+            }
+        }
+    });
+
+
+
+</script>
+@*<div>
+        @Html.ActionLink("List of Events", "Index", "Events")<br />
+    </div>*@

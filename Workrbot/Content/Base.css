@@ -1,0 +1,57 @@
+﻿.navbar-inverse {
+    background-color: #596e8e;
+    border-color: #596e8e;
+}
+
+    .navbar-inverse .navbar-nav > li > a {
+        color: white;
+    }
+
+    .navbar-inverse .navbar-nav > li:hover {
+        background: #7789a5;
+    }
+
+
+.body-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin-top: 200px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+}
+
+.navbar-fixed-top {
+    top: 0;
+    height: 180px;
+    border-width: 0 0 1px;
+}
+
+.navbar-nav {
+    float: left;
+    margin: 0;
+    position: absolute;
+    bottom: 0;
+}
+
+.titlediv {
+    text-align: center;
+    color: white;
+    margin-top: 60px;
+}
+
+.canvas-div{
+    margin-top: 20px;
+}
+
+.dl-horizontal dt {
+    float: left;
+    white-space: inherit;
+    width: 200px;
+    text-align: start;
+}

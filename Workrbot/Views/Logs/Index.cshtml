@@ -1,0 +1,17 @@
+﻿@model IEnumerable<string>
+
+<h3>Logs</h3>
+
+<table class="table">
+
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item)
+            </td>
+
+        </tr>
+    }
+</table>
